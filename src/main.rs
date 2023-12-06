@@ -4,12 +4,21 @@ mod func;
 use self::func::*;   // 采用self
 //use crate::func::*;  // 采用crate
 
-use rust_stl::stack::base_converter;
+use rust_stl::stack;
+
 
 fn main()
 {
     print_rust();
 
-    let str = base_converter::base_converter(7, 2);
-    println!("str: {}", str);
+    let infix = "( A + B ) * ( C + D )";
+    let postfix = stack::infix_to_postfix(infix);
+    match postfix {
+        Some(val) => {
+            println!("infix: {infix} -> postfix: {val}");
+        }
+        None => {
+            println!("{infix} is not a correct infix string");
+        }
+    }
 }

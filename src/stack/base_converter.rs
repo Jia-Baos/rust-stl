@@ -1,7 +1,7 @@
 use crate::stack::stack;
 
 pub fn base_converter_2(mut dec_num: u32) -> String {
-    // 用栈来保存余数 rem
+    // 用栈来保存余数rem
     let mut rem_stack = stack::Stack::new();
 
     // 余数rem入栈

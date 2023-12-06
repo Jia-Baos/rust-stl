@@ -110,8 +110,8 @@ mod tests {
         let sb = "()((()";
         let res1 = par_checker1(sa);
         let res2 = par_checker1(sb);
-        println!("sa balanced: {}", res1);
-        println!("sb balanced: {}", res2);
+        assert_eq!(res1, true);
+        assert_eq!(res2, false);
     }
 
     #[test]
@@ -120,18 +120,18 @@ mod tests {
         let sb = "(){[}]";
         let res1 = par_checker2(sa);
         let res2 = par_checker2(sb);
-        println!("sa balanced: {}", res1);
-        println!("sb balanced: {}", res2);
+        assert_eq!(res1, true);
+        assert_eq!(res2, false);
     }
 
     #[test]
     fn test_par_checker3() {
-        let sa = "(){123[123]}";
-        let sb = "(){[}]";
+        let sa = "(2+3){func}[abc]";
+        let sb = "(2+3)*(3-1";
         let res1 = par_checker3(sa);
         let res2 = par_checker3(sb);
-        println!("sa balanced: {}", res1);
-        println!("sb balanced: {}", res2);
+        assert_eq!(res1, true);
+        assert_eq!(res2, false);
     }
 }
 
