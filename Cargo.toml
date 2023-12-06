@@ -1,0 +1,9 @@
+[package]
+name = "rust-stl"
+version = "0.1.0"
+authors=["Jia-Baos <18383827268@163.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
