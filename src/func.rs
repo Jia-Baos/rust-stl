@@ -1,5 +1,3 @@
-
-pub fn print_rust(){
+pub fn print_rust() {
     println!("Welcome to Rust");
 }
-
