@@ -1,10 +1,16 @@
 //#[allow(dead_code)]
+pub mod func;
+
+pub use self::func::*;   // 采用self
+//use crate::func::*;  // 采用crate
 
 use rust_stl::stack::stack;
-use rust_stl::stack::par_checker1;
+use rust_stl::stack::par_checker;
 
 fn main()
 {
+    print_rust();
+
     let mut s = stack::Stack::new();
     assert_eq!(s.is_empty(), true);
     s.push(1);
@@ -20,9 +26,8 @@ fn main()
 
     let sa = "()(())";
     let sb = "()((()";
-    let res1 = par_checker1::par_checker(sa);
-    let res2 = par_checker1::par_checker(sb);
-    println!("sa balanced: {}",res1);
-    println!("sb balanced: {}",res2);
-
+    let res1 = par_checker::par_checker(sa);
+    let res2 = par_checker::par_checker(sb);
+    println!("sa balanced: {}", res1);
+    println!("sb balanced: {}", res2);
 }

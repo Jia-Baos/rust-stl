@@ -1,2 +1,2 @@
 pub mod stack;
-pub mod par_checker1;
+pub mod par_checker;

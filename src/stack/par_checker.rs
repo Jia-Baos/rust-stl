@@ -1,4 +1,4 @@
-use super::stack::Stack;
+use crate::stack::stack;    // 引用同级文件，crate::文件所在文件夹名::所引用文件名
 
 
 pub fn par_checker(par: &str) -> bool {
@@ -9,7 +9,7 @@ pub fn par_checker(par: &str) -> bool {
 
     let mut index = 0;
     let mut balance = true; // 括号是否匹配的标识
-    let mut stack = Stack::new();   // 使用前面实现的栈
+    let mut stack = stack::Stack::new();   // 使用前面实现的栈
     while index < char_list.len() && balance {
         let c = char_list[index];
 
