@@ -1,7 +1,7 @@
 //#[allow(dead_code)]
-pub mod func;
+mod func;
 
-pub use self::func::*;   // 采用self
+use self::func::*;   // 采用self
 //use crate::func::*;  // 采用crate
 
 use rust_stl::stack::stack;

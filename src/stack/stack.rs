@@ -38,8 +38,6 @@ impl<T> Stack<T> {
 }
 
 
-
-
 #[test]
 fn test()
 {
