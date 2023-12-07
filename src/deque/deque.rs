@@ -14,11 +14,11 @@ impl<T> Deque<T> {
         self.data.len()
     }
 
-    pub fn is_empty(&self) -> bool { self.data.len() == 0 }
+    pub fn is_empty(&self) -> bool { Self::size(&self) == 0 }
 
     // Vec末尾为队首
     pub fn add_front(&mut self, val: T) -> Result<(), String> {
-        if self.size() == self.cap {
+        if Self::size(&self) == self.cap {
             return Err("No space available".to_string());
         }
         self.data.push(val);
@@ -27,7 +27,7 @@ impl<T> Deque<T> {
 
     // Vec首部为队尾
     pub fn add_rear(&mut self, val: T) -> Result<(), String> {
-        if self.size() == self.cap {
+        if Self::size(self) == self.cap {
             return Err("No space available".to_string());
         }
         self.data.insert(0, val);
@@ -36,47 +36,52 @@ impl<T> Deque<T> {
 
     // 从队首移除数据
     pub fn remove_front(&mut self) -> Option<T> {
-        if self.size() > 0 { self.data.pop() } else { None }
+        if Self::size(self) > 0 { self.data.pop() } else { None }
     }
 
     // 从队尾移除元素
     pub fn remove_rear(&mut self) -> Option<T> {
-        if self.size() > 0 { Some(self.data.remove(0)) } else { None }
+        if Self::size(self) > 0 { Some(self.data.remove(0)) } else { None }
     }
 
     // 返回队首元素
     pub fn elem_front(&self) -> Option<&T> {
-        if self.size() == 0 { return None; }
+        if Self::size(self) == 0 { return None; }
         self.data.get(self.size() - 1)
     }
     // 返回队尾元素
     pub fn elem_rear(&self) -> Option<&T> {
-        if self.size() == 0 { return None; }
+        if Self::size(self) == 0 { return None; }
         self.data.get(0)
     }
 }
 
-#[test]
-fn test() {
-    let mut d = Deque::new(4);
-    assert_eq!(d.is_empty(), true);
-    let _r1 = d.add_front(1);
-    let _r2 = d.add_front(2);
-    let _r3 = d.add_rear(3);
-    let _r4 = d.add_rear(4);
-    if let Err(error) = d.add_front(5) {
-        println!("add_front error: {error}");
-    }
-    assert_eq!(d.size(), 4);
-    assert_eq!(d.elem_front(), Some(2).as_ref());
-    assert_eq!(d.elem_rear(), Some(4).as_ref());
+#[cfg(test)]
+mod tests {
+    use crate::deque::deque::Deque;
 
-    if let Some(data) = d.remove_rear() {
-        println!("data: {data}");
-    } else {
-        println!("empty queue");
-    }
+    #[test]
+    fn test() {
+        let mut d = Deque::new(4);
+        assert_eq!(d.is_empty(), true);
+        let _r1 = d.add_front(1);
+        let _r2 = d.add_front(2);
+        let _r3 = d.add_rear(3);
+        let _r4 = d.add_rear(4);
+        if let Err(error) = d.add_front(5) {
+            println!("add_front error: {error}");
+        }
+        assert_eq!(d.size(), 4);
+        assert_eq!(d.elem_front(), Some(2).as_ref());
+        assert_eq!(d.elem_rear(), Some(4).as_ref());
 
-    println!("size: {}, is_empty: {}", d.size(), d.is_empty());
-    println!("content: {:?}", d);
+        if let Some(data) = d.remove_rear() {
+            println!("data: {data}");
+        } else {
+            println!("empty queue");
+        }
+
+        println!("size: {}, is_empty: {}", d.size(), d.is_empty());
+        println!("content: {:?}", d);
+    }
 }

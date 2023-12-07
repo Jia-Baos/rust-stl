@@ -15,12 +15,12 @@ impl<T> Queue<T> {
     }
 
     pub fn is_empty(&self) -> bool {
-        self.data.len() == 0
+        Self::size(&self) == 0
     }
 
     // 判断是否有剩余空间，有则数据加入队列
     pub fn enqueue(&mut self, val: T) -> Result<(), String> {
-        if self.size() == self.cap {
+        if Self::size(&self) == self.cap {
             return Err("No space available".to_string());
         }
         // Vec 的末尾作为 Queue 的头部
@@ -30,7 +30,7 @@ impl<T> Queue<T> {
 
     // 数据出队
     pub fn dequeue(&mut self) -> Option<T> {
-        if self.size() > 0 {
+        if Self::size(&self) > 0 {
             self.data.pop()
         } else {
             None
@@ -38,24 +38,29 @@ impl<T> Queue<T> {
     }
 }
 
-#[test]
-fn test() {
-    let mut q = Queue::new(3);
-    assert_eq!(q.is_empty(), true);
-    let _r1 = q.enqueue(1);
-    let _r2 = q.enqueue(2);
-    let _r3 = q.enqueue(3);
-    if let Err(error) = q.enqueue(4) {
-        println!("Enqueue error: {error}");
-    }
-    assert_eq!(q.size(), 3);
+#[cfg(test)]
+mod tests {
+    use crate::queue::queue::Queue;
 
-    if let Some(data) = q.dequeue() {
-        println!("data: {data}");
-    } else {
-        println!("empty queue");
-    }
+    #[test]
+    fn test() {
+        let mut q = Queue::new(3);
+        assert_eq!(q.is_empty(), true);
+        let _r1 = q.enqueue(1);
+        let _r2 = q.enqueue(2);
+        let _r3 = q.enqueue(3);
+        if let Err(error) = q.enqueue(4) {
+            println!("Enqueue error: {error}");
+        }
+        assert_eq!(q.size(), 3);
 
-    println!("size: {}, empty: {}", q.size(), q.is_empty());
-    println!("content: {:?}", q);
+        if let Some(data) = q.dequeue() {
+            println!("data: {data}");
+        } else {
+            println!("empty queue");
+        }
+
+        println!("size: {}, empty: {}", q.size(), q.is_empty());
+        println!("content: {:?}", q);
+    }
 }

@@ -4,21 +4,13 @@ mod func;
 use self::func::*;   // 采用self
 //use crate::func::*;  // 采用crate
 
-use rust_stl::stack;
-
+use rust_stl::deque;
 
 fn main()
 {
     print_rust();
 
-    let infix = "( A + B ) * ( C + D )";
-    let postfix = stack::infix_to_postfix(infix);
-    match postfix {
-        Some(val) => {
-            println!("infix: {infix} -> postfix: {val}");
-        }
-        None => {
-            println!("{infix} is not a correct infix string");
-        }
-    }
+    let pal = "rustsur";
+    let is_pal = deque::pal_checker(pal);
+    println!("{pal} is palindrome string: {is_pal}");
 }
