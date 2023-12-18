@@ -1,20 +1,22 @@
 //#[allow(dead_code)]
-
-
 mod func;
 
 use self::func::*;  // 采用self
 //use crate::func::*;  // 采用crate
 
-use rust_stl::dp;
+use rust_stl::search;
 
 fn main()
 {
     print_rust();
 
-    // cashes 保存各种面额的纸币
-    let cashes = [1, 5, 10, 20, 50];
-    let amount = 31u32;
-    let cashes_num = dp::num_coins1(&cashes, amount);
-    println!("need refund {cashes_num} cashes");
+    let nums = [1, 3, 8, 10, 15, 32, 44, 48, 50, 55, 60, 62, 64];
+
+    let num = 44;
+    let found = search::sequential_search_ordered(&nums, num);
+    println!("{num} is in nums: {found}");
+
+    let num = 49;
+    let found = search::sequential_search_ordered(&nums, num);
+    println!("{num} is in nums: {found}");
 }
