@@ -4,20 +4,13 @@ mod func;
 use self::func::*;  // 采用self
 //use crate::func::*;  // 采用crate
 
-use rust_stl::hash;
+use rust_stl::sort;
 
 fn main()
 {
     print_rust();
 
-    let mut hmap = hash::HashMap::new(11);
-    hmap.insert(10, "cat");
-    hmap.insert(2, "dog");
-    hmap.insert(3, "tiger");
-
-    println!("HashMap size {:?}", hmap.len());
-    println!("HashMap contains key 2: {}", hmap.contains(2));
-    println!("HashMap key 3: {:?}", hmap.get(3));
-    println!("HashMap remove key 3: {:?}", hmap.remove(3));
-    println!("HashMap remove key 3: {:?}", hmap.remove(3));
+    let mut nums = [1,2,8,3,4,9,5,6,7];
+    sort::cbic_sort2(&mut nums);
+    println!("sorted nums: {:?}", nums);
 }

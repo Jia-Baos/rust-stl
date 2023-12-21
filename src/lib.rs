@@ -7,3 +7,4 @@ pub mod recursion;
 pub mod dp;
 pub mod search;
 pub mod hash;
+pub mod sort;
