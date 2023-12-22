@@ -90,10 +90,11 @@ pub fn comb_sort(nums: &mut [i32]) {
 /// # Examples
 ///
 /// ```
-/// use rust_stl::sort::bubble_sort;
+/// use crate::rust_stl::sort::bubble_sort;
 /// let mut nums = [1,2,8,3,4,9,5,6,7];
 /// bubble_sort::cbic_sort1(&mut nums);
-/// println!("sorted nums: {:?}", nums);
+/// let val = nums[nums.len()-1];
+/// assert_eq!(val, 9);
 ///```
 pub fn cbic_sort1(nums: &mut [i32]) {
     for i in 0..nums.len() {
@@ -110,10 +111,11 @@ pub fn cbic_sort1(nums: &mut [i32]) {
 /// # Examples
 ///
 /// ```
-/// use rust_stl::sort::bubble_sort;
+/// use crate::rust_stl::sort::bubble_sort;
 /// let mut nums = [1,2,8,3,4,9,5,6,7];
 /// bubble_sort::cbic_sort2(&mut nums);
-/// println!("sorted nums: {:?}", nums);
+/// let val = nums[nums.len()-1];
+/// assert_eq!(val, 9);
 ///```
 pub fn cbic_sort2(nums: &mut [i32]) {
     if nums.len() < 2 { return; }

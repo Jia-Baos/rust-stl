@@ -8,3 +8,4 @@ pub mod dp;
 pub mod search;
 pub mod hash;
 pub mod sort;
+pub mod tree;
