@@ -1,3 +1,3 @@
-pub mod hashmap;
+mod hashmap;
 
 pub use self::hashmap::HashMap;

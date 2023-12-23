@@ -1,11 +1,9 @@
 macro_rules! parent {   // 计算父节点下标宏
     ($child:ident) => {$child>>1};
 }
-
 macro_rules! left_child {   // 计算左子节点下标宏
     ($parent:ident) => {($parent<<1)+1};
 }
-
 macro_rules! right_child {  // 计算右子节点下标宏
     ($parent:ident) => {($parent+1)<<1};
 }
