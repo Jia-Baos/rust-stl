@@ -10,25 +10,12 @@ fn main()
 {
     print_rust();
 
-    let mut bst = tree::BST::<i32, char>::new();
-    bst.insert(8, 'e');
-    bst.insert(6, 'c');
-    bst.insert(7, 'd');
-    bst.insert(5, 'b');
-    bst.insert(10, 'g');
-    bst.insert(9, 'f');
-    bst.insert(11, 'h');
-    bst.insert(4, 'a');
-
-    println!("empty: {:?}, len: {:?}", bst.is_empty(), bst.len());
-    println!("max: {:?}, min: {:?}", bst.max(), bst.min());
-    println!("key: 5, val: {:?}", bst.get(&5));
-    println!("5 in bst: {:?}", bst.search(&5));
-
-    println!("inorder: ");
-    bst.inorder();
-    println!("preorder: ");
-    bst.preorder();
-    println!("postorder: ");
-    bst.postorder();
+    let mut avl = tree::AvlTree::new();
+    for i in 0..10 {
+    let (_r1, _r2) = avl.insert(i);
+    }
+    println!("empty: {}", avl.is_empty());
+    println!("length: {}", avl.len());
+    println!("depth: {}", avl.depth());
+    println!("9 in avl: {}", avl.search(&9));
 }
