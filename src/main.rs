@@ -4,18 +4,18 @@ mod func;
 use self::func::*;  // 采用self
 //use crate::func::*;  // 采用crate
 
-use rust_stl::tree;
+use rust_stl::graph;
 
 fn main()
 {
     print_rust();
 
-    let mut avl = tree::AvlTree::new();
-    for i in 0..10 {
-    let (_r1, _r2) = avl.insert(i);
-    }
-    println!("empty: {}", avl.is_empty());
-    println!("length: {}", avl.len());
-    println!("depth: {}", avl.depth());
-    println!("9 in avl: {}", avl.search(&9));
+    // 边是无向的
+    let data = [
+        [1, 2], [2, 1], [1, 3], [3, 1], [2, 4],
+        [4, 2], [2, 5], [5, 2], [3, 6], [6, 3],
+        [3, 7], [7, 3], [4, 5], [5, 4], [6, 7],
+        [7, 6], [5, 8], [8, 5], [6, 8], [8, 6]];
+    let gp = graph::create_graph(data);
+    //graph::bfs(gp);
 }
