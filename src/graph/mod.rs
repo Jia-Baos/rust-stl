@@ -13,8 +13,6 @@ pub use self::graph_adjlist::GraphAdjlist;
 pub use self::traverse::create_graph;
 pub use self::traverse::bfs;
 pub use self::traverse::dfs;
-pub use self::traverse::test_bfs;
-pub use self::traverse::test_dfs;
 
 pub use self::dijkstra::Vertex;
 pub use self::dijkstra::Visited;

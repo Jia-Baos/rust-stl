@@ -18,4 +18,5 @@ fn main()
         [7, 6], [5, 8], [8, 5], [6, 8], [8, 6]];
     let gp = graph::create_graph(data);
     //graph::bfs(gp);
+    graph::dfs(gp);
 }

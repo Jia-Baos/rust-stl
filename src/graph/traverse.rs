@@ -51,7 +51,7 @@ impl Graph {
     }
 }
 
-// 根据data构建图
+// 根据data构建图，采用邻接表来存储节点
 pub fn create_graph(data: [[usize; 2]; 20]) -> Vec<(Graph, usize)> {
     let mut arr: Vec<(Graph, usize)> = Vec::new();
     for _ in 0..9 { arr.push((Graph::new(), 0)) };
@@ -139,18 +139,27 @@ pub fn dfs(graph: Vec<(Graph, usize)>) {
     println!();
 }
 
-pub fn test_bfs() {
-    let data = [[1, 2], [2, 1], [1, 3], [3, 1], [2, 4], [4, 2], [2, 5],
-        [5, 2], [3, 6], [6, 3], [3, 7], [7, 3], [4, 5], [5, 4],
-        [6, 7], [7, 6], [5, 8], [8, 5], [6, 8], [8, 6]];
-    let gp = create_graph(data);
-    bfs(gp);
-}
+#[cfg(test)]
+mod tests {
+    use crate::graph::traverse;
 
-pub fn test_dfs() {
-    let data = [[1, 2], [2, 1], [1, 3], [3, 1], [2, 4], [4, 2], [2, 5],
-        [5, 2], [3, 6], [6, 3], [3, 7], [7, 3], [4, 5], [5, 4],
-        [6, 7], [7, 6], [5, 8], [8, 5], [6, 8], [8, 6]];
-    let gp = create_graph(data);
-    bfs(gp);
+    pub fn test_bfs() {
+        let data = [
+            [1, 2], [2, 1], [1, 3], [3, 1], [2, 4],
+            [4, 2], [2, 5], [5, 2], [3, 6], [6, 3],
+            [3, 7], [7, 3], [4, 5], [5, 4], [6, 7],
+            [7, 6], [5, 8], [8, 5], [6, 8], [8, 6]];
+        let gp = traverse::create_graph(data);
+        traverse::bfs(gp);
+    }
+
+    pub fn test_dfs() {
+        let data = [
+            [1, 2], [2, 1], [1, 3], [3, 1], [2, 4],
+            [4, 2], [2, 5], [5, 2], [3, 6], [6, 3],
+            [3, 7], [7, 3], [4, 5], [5, 4], [6, 7],
+            [7, 6], [5, 8], [8, 5], [6, 8], [8, 6]];
+        let gp = traverse::create_graph(data);
+        traverse::bfs(gp);
+    }
 }
