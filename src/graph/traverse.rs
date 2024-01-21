@@ -143,7 +143,7 @@ pub fn dfs(graph: Vec<(Graph, usize)>) {
 mod tests {
     use crate::graph::traverse;
 
-    pub fn test_bfs() {
+    fn test_bfs() {
         let data = [
             [1, 2], [2, 1], [1, 3], [3, 1], [2, 4],
             [4, 2], [2, 5], [5, 2], [3, 6], [6, 3],
@@ -153,7 +153,7 @@ mod tests {
         traverse::bfs(gp);
     }
 
-    pub fn test_dfs() {
+    fn test_dfs() {
         let data = [
             [1, 2], [2, 1], [1, 3], [3, 1], [2, 4],
             [4, 2], [2, 5], [5, 2], [3, 6], [6, 3],
