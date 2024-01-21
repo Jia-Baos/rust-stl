@@ -10,18 +10,9 @@ fn main()
 {
     print_rust();
 
-    let mut trie = demo::Trie::new();
-    trie.insert("box");
-    trie.insert("insert");
-    trie.insert("apple");
-    trie.insert("appeal");
-
-    let res1 = trie.search("apple");
-    let res2 = trie.search("apples");
-    let res3 = trie.start_with("ins");
-    let res4 = trie.start_with("ina");
-    println!("word 'apple' in Trie: {res1}");
-    println!("word 'apples' in Trie: {res2}");
-    println!("prefix 'ins' in Trie: {res3}");
-    println!("prefix 'ina' in Trie: {res4}");
+    let mut bf = demo::BloomFilter::new(100, 0.08);
+    (0..20).for_each(|i| bf.insert(&i));
+    let res1 = bf.contains(&2);
+    let res2 = bf.contains(&50);
+    println!("2 in bf: {res1}, 50 in bf: {res2}");
 }
