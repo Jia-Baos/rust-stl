@@ -5,14 +5,19 @@ use self::func::*;  // 采用self
 //use crate::func::*;  // 采用crate
 
 use rust_stl::demo;
+use rust_stl::demo::Encoder;
+use rust_stl::demo::Decoder;
 
 fn main()
 {
     print_rust();
 
-    let mut bf = demo::BloomFilter::new(100, 0.08);
-    (0..20).for_each(|i| bf.insert(&i));
-    let res1 = bf.contains(&2);
-    let res2 = bf.contains(&50);
-    println!("2 in bf: {res1}, 50 in bf: {res2}");
+    println!("{:#?}", "abc".encode_to_base58());
+    println!("{:#?}", "ZiCa".decode_from_base58().unwrap());
+
+    println!("{:#?}", "我爱你".encode_to_base58());
+    println!("{:#?}", "3wCHf2LRNuMmh".decode_from_base58());
+
+    println!("{:#?}", "我愛你".encode_to_base58());
+    println!("{:#?}", "3wCHf1q5U5pUP".decode_from_base58());
 }
