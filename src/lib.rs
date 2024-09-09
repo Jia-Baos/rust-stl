@@ -1,13 +1,15 @@
-pub mod vec;
-pub mod deque;
-pub mod queue;
-pub mod stack;
-pub mod linked_list;
-pub mod recursion;
-pub mod dp;
-pub mod search;
-pub mod hash;
-pub mod sort;
-pub mod tree;
-pub mod graph;
 pub mod demo;
+pub mod deque;
+pub mod dp;
+pub mod graph;
+pub mod hash;
+pub mod linked_list;
+pub mod queue;
+pub mod recursion;
+pub mod search;
+pub mod sort;
+pub mod stack;
+pub mod tree;
+pub mod vec;
+
+pub mod func;

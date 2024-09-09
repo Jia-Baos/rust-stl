@@ -21,8 +21,10 @@ pub struct LRUCache<K, V> {
     m_entries: Vec<Entry<K, V>>,
 }
 
-
-impl<K: Clone + Hash + Eq, V> LRUCache<K, V> {
+impl<K, V> LRUCache<K, V>
+where
+    K: Clone + Hash + Eq,
+{
     pub fn new() -> Self {
         Self::with_capacity(CACHE_SIZE)
     }
@@ -56,13 +58,12 @@ impl<K: Clone + Hash + Eq, V> LRUCache<K, V> {
             });
 
             // 新的头节点
-            self.m_entries.push(
-                Entry {
-                    m_key: key.clone(),
-                    m_val: Some(val),
-                    m_prev: None,
-                    m_next: self.m_head,
-                });
+            self.m_entries.push(Entry {
+                m_key: key.clone(),
+                m_val: Some(val),
+                m_prev: None,
+                m_next: self.m_head,
+            });
 
             self.m_head = Some(index);
             self.m_tail = self.m_tail.or(self.m_head);
@@ -73,21 +74,25 @@ impl<K: Clone + Hash + Eq, V> LRUCache<K, V> {
     }
 
     pub fn get(&mut self, key: &K) -> Option<&V> {
-        if self.contains(key) { self.access(key); }
+        if self.contains(key) {
+            self.access(key);
+        }
 
         let entries = &self.m_entries;
-        self.m_map.get(key).and_then(move |&i| {
-            entries[i].m_val.as_ref()
-        })
+        self.m_map
+            .get(key)
+            .and_then(move |&i| entries[i].m_val.as_ref())
     }
 
     pub fn get_mut(&mut self, key: &K) -> Option<&mut V> {
-        if self.contains(key) { self.access(key); }
+        if self.contains(key) {
+            self.access(key);
+        }
 
         let entries = &mut self.m_entries;
-        self.m_map.get(key).and_then(move |&i| {
-            entries[i].m_val.as_mut()
-        })
+        self.m_map
+            .get(key)
+            .and_then(move |&i| entries[i].m_val.as_mut())
     }
 
     pub fn contains(&mut self, key: &K) -> bool {
@@ -159,11 +164,17 @@ impl<K: Clone + Hash + Eq, V> LRUCache<K, V> {
         }
     }
 
-    fn len(&self) -> usize { self.m_map.len() }
+    fn len(&self) -> usize {
+        self.m_map.len()
+    }
 
-    fn is_empty(&self) -> bool { self.m_map.is_empty() }
+    fn is_empty(&self) -> bool {
+        self.m_map.is_empty()
+    }
 
-    fn is_full(&self) -> bool { self.m_map.len() == self.m_cap }
+    fn is_full(&self) -> bool {
+        self.m_map.len() == self.m_cap
+    }
 }
 
 #[cfg(test)]
