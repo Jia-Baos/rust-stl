@@ -126,7 +126,17 @@ impl<T: Copy + Debug> LVec<T> {
         Some(node.elem)
     }
 
-    // 打印LVec， 当然也可以实现ToString 特性并用println 打印
+    /// 打印LVec， 当然也可以实现ToString 特性并用println 打印
+    ///
+    /// # Examples
+    ///
+    /// ```
+    /// use rust_stl::vec::LVec;
+    /// let mut list_vec = LVec::new();
+    /// list_vec.push(0);
+    /// list_vec.push(1);
+    /// list_vec.print_lvec();
+    ///```
     pub fn print_lvec(&self) {
         let mut curr = self.head.as_ref();
         while let Some(node) = curr {

@@ -16,33 +16,35 @@ fn main() {
     }
     println!();
 
-    let mut list_vec = rust_stl::vec::LVec::new();
-    assert_eq!(list_vec.len(), 0);
-    assert_eq!(list_vec.is_empty(), true);
+    let mut binary_tree = rust_stl::tree::BinaryTree::new(1);
+    binary_tree.insert_left_tree(0);
+    binary_tree.insert_right_tree(2);
+    let root_value = binary_tree.get_key();
+    let left_value = binary_tree.get_left().unwrap().get_key();
+    let right_value = binary_tree.get_right().unwrap().get_key();
+    println!("root_value: {root_value}");
+    println!("left_value: {left_value}");
+    println!("right_value: {right_value}");
 
-    list_vec.push(0);
-    list_vec.push(1);
-    list_vec.insert(2, 2);
-    list_vec.print_lvec();
-    println!("----------------");
+    binary_tree.set_key(3);
+    let value_parent_new = binary_tree.get_key();
+    println!("value_parent_new: {value_parent_new}");
 
-    let mut val = list_vec.remove(0);
-    assert_eq!(val.unwrap(), 0);
+    println!("------pretorder------");
+    binary_tree.preorder();
 
-    val = list_vec.pop();
-    assert_eq!(val, Some(2));
+    println!("------inorder------");
+    binary_tree.inorder();
 
-    list_vec.print_lvec();
-    println!("----------------");
+    println!("------postorder------");
+    binary_tree.postorder();
 
-    list_vec.clear();
-    assert_eq!(list_vec.len(), 0);
-    assert_eq!(list_vec.is_empty(), true);
+    println!("------pretorder------");
+    rust_stl::tree::BinaryTree::preorder(&binary_tree);
 
-    let mut list_vec_other = rust_stl::vec::LVec::new();
-    list_vec_other.push(2);
+    println!("------inorder------");
+    rust_stl::tree::BinaryTree::inorder(&binary_tree);
 
-    list_vec.append(&mut list_vec_other);
-    list_vec.print_lvec();
-    println!("----------------");
+    println!("------postorder------");
+    rust_stl::tree::BinaryTree::postorder(&binary_tree);
 }
